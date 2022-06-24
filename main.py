@@ -1,4 +1,3 @@
-from tkinter import N
 from fastapi import FastAPI, Path
 from typing import Optional
 from pydantic import BaseModel
@@ -67,17 +66,12 @@ def create_student(student_id : int, student: Student):
 def update_student(student_id: int, student: UpdateStudent):
     if student_id not in students:
         return {"Error": "No student with this ID, cannot update"}
-    
-    print(students[student_id].name)
     if student.name != None:
-        students[student_id].name = student.name
-
+        students[student_id]['name'] = student.name
     if student.age != None:
-        students[student_id].age = student.age
-
+        students[student_id]['age'] = student.age
     if student.topic != None:
-        students[student_id].topic = student.topic
-
+        students[student_id]['topic'] = student.topic
     return students[student_id]
     
 
